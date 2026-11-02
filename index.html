@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  
+  <!-- Primary Document Metadata -->
+  <title>K. Prajesh Kumar — AI Engineer &amp; ML Systems Portfolio</title>
+  <meta name="description" content="Portfolio of K. Prajesh Kumar, AI Engineer specializing in production RAG pipelines, offline CPU inference with Ollama &amp; Llama.cpp, and low-latency full-stack interfaces."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://prajesh-tech.github.io/portfolio/"/>
+  
+  <!-- Open Graph / Social Sharing Metadata -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://prajesh-tech.github.io/portfolio/"/>
+  <meta property="og:title" content="K. Prajesh Kumar — AI Engineer Portfolio"/>
+  <meta property="og:description" content="AI Engineer building production RAG systems, offline-first LLM applications, and low-latency full-stack interfaces."/>
+  <meta property="og:image" content="https://prajesh-tech.github.io/portfolio/screen.png"/>
+  
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="K. Prajesh Kumar — AI Engineer Portfolio"/>
+  <meta name="twitter:description" content="AI Engineer building production RAG systems, offline-first LLM applications, and low-latency full-stack interfaces."/>
+  <meta name="twitter:image" content="https://prajesh-tech.github.io/portfolio/screen.png"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+
+  <!-- Font Preconnect Connections -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+
+  <!-- Material Symbols & Typography (Single Merged & Optimized Font Request) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+
+  <!-- Compiled Production Tailwind & Design System Stylesheet -->
+  <link href="./dist/output.css" rel="stylesheet"/>
+
+  <!-- Prevent Theme Flash (FOUC) -->
+  <script>
+    (function() {
+      const storedTheme = localStorage.getItem('prajesh_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="bg-background dark:bg-background-dark font-body-md text-on-surface dark:text-text-primary-dark antialiased selection:bg-primary-container selection:text-on-primary-container transition-colors duration-300 relative">
+  <!-- Accessible Skip to Main Content Link -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- React Bits <DotField /> Interactive Canvas Background -->
+  <div aria-hidden="true" id="dotfield-container">
+    <canvas id="dotfield-canvas"></canvas>
+  </div>
+
+  <!-- 1. React Bits <PillNav /> Floating Header Component with sliding active indicator & Theme Toggle -->
+  <header class="fixed top-4 left-0 right-0 z-40 px-3 flex justify-center pointer-events-none">
+    <div class="pill-nav-container pointer-events-auto max-w-[680px] w-full h-12 rounded-full px-2 sm:px-2.5 flex items-center justify-between transition-all duration-300">
+      <!-- Brand / Monogram pill -->
+      <a class="flex items-center gap-2 pl-1.5 pr-1.5 sm:pr-2 py-1 rounded-full group cursor-pointer shrink-0" href="#home" aria-label="Prajesh Kumar - Home">
+        <div class="w-7 h-7 rounded-full bg-primary dark:bg-white text-on-primary dark:text-black flex items-center justify-center font-bold text-[11px] shadow-sm tracking-tight transition-transform group-hover:scale-105">
+          PK
+        </div>
+        <div class="hidden sm:flex flex-col leading-tight">
+          <span class="font-headline-item text-[12px] font-semibold text-on-surface dark:text-white">Prajesh</span>
+          <span class="font-label-code text-[9px] text-on-surface-variant dark:text-text-muted-dark tracking-wider">AI • ML</span>
+        </div>
+      </a>
+      
+      <!-- Interactive Sliding Pill Links -->
+      <nav aria-label="Main Navigation" class="relative flex items-center gap-0.5 sm:gap-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden shrink min-w-0 mx-1" id="pill-nav-links">
+        <div class="pill-active-bg opacity-0" id="pill-sliding-bg"></div>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="home" href="#home">Home</a>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="about" href="#about">About</a>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="experience" href="#experience">Experience</a>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="projects" href="#projects">Projects</a>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="skills" href="#skills">Skills</a>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="education" href="#education">Education</a>
+        <a class="pill-link relative z-10 px-2 sm:px-3 py-1 text-[11px] sm:text-[13px] font-medium text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white transition-colors cursor-pointer shrink-0" data-path="contact" href="#contact">Contact</a>
+      </nav>
+
+      <!-- Header Actions (⌘K Menu + Theme Toggle + Contact) -->
+      <div class="flex items-center gap-1.5 pr-0.5 shrink-0">
+        <!-- ⌘K Command Palette Trigger Button -->
+        <button aria-label="Open command menu (⌘K)" class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container dark:bg-[#18181e] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white border border-black/5 dark:border-white/10 text-[11px] font-label-code transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" id="cmd-k-trigger" type="button">
+          <span>⌘K</span>
+        </button>
+        <!-- Dark / Light Theme Toggle Button -->
+        <button aria-label="Toggle theme" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" id="theme-toggle-btn" type="button">
+          <span aria-hidden="true" class="material-symbols-outlined text-[18px] dark:hidden">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[18px] hidden dark:inline">light_mode</span>
+        </button>
+        <!-- Profile indicator -->
+        <a aria-label="Contact Prajesh" class="w-7 h-7 rounded-full bg-primary dark:bg-white flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="#contact">
+          <span aria-hidden="true" class="material-symbols-outlined text-on-primary dark:text-black text-[15px]">mail</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 w-full pt-20 sm:pt-24 pb-space-3xl max-w-container-max mx-auto px-space-md min-h-screen" id="main-content" tabindex="-1">
+    <div class="flex flex-col w-full">
+      <!-- Top Spatial Separation -->
+      <div class="space-y-16 sm:space-y-20">
+        <!-- 2. Hero Section with Staggered Blur-Fade -->
+        <section class="flex flex-col-reverse sm:flex-row items-start justify-between gap-8 pt-4 sm:pt-6" id="home">
+          <div class="flex-1 space-y-4">
+            <div class="blur-fade-init inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container-high dark:bg-[#1c1c22] text-on-surface dark:text-text-primary-dark text-label-badge font-label-badge" style="animation-delay: 60ms;">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 radar-dot"></span>
+              <span>Available for opportunities</span>
+              <span class="text-on-surface-variant dark:text-text-muted-dark">•</span>
+              <span class="text-on-surface-variant dark:text-text-muted-dark flex items-center gap-1">
+                <span aria-hidden="true" class="material-symbols-outlined text-[13px]">location_on</span>
+                Hyderabad, India
+              </span>
+            </div>
+            <div class="space-y-2">
+              <h1 class="blur-fade-init font-headline-hero text-headline-hero sm:text-[44px] sm:leading-[48px] tracking-tight text-on-surface dark:text-white" style="animation-delay: 150ms;">
+                Hi, I'm Prajesh <span class="inline-block hover:rotate-12 transition-transform cursor-default">👋</span>
+              </h1>
+              <p class="blur-fade-init font-headline-item text-headline-item text-on-surface-variant dark:text-[#a1a1aa] font-medium max-w-xl" style="animation-delay: 240ms;">
+                K. Prajesh Kumar — AI Engineer building production RAG systems and offline-first LLM applications.
+              </p>
+            </div>
+            <p class="blur-fade-init font-body-md text-body-md text-on-surface-variant dark:text-[#a1a1aa] leading-relaxed max-w-xl" style="animation-delay: 330ms;">
+              AI Engineering undergraduate who ships working software, not just coursework — deployed projects spanning RAG pipelines, offline CPU inference, and full-stack web applications. Currently an AI Trainee at <strong class="font-semibold text-on-surface dark:text-white">Viswam AI</strong>.
+            </p>
+            <!-- Micro Quick Actions -->
+            <div class="blur-fade-init flex flex-wrap items-center gap-2 pt-2" style="animation-delay: 420ms;">
+              <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary dark:bg-white text-on-primary dark:text-black font-label-badge text-label-badge shadow-sm hover:opacity-90 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="mailto:prajeshkaniganti@gmail.com">
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px]">mail</span>
+                <span>Get in touch</span>
+              </a>
+              <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container dark:bg-[#18181e] hover:bg-surface-container-high dark:hover:bg-[#22222a] text-on-surface dark:text-white border border-transparent dark:border-white/10 font-label-badge text-label-badge transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="https://github.com/prajesh-tech" rel="noreferrer" target="_blank">
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px]">code</span>
+                <span>github.com/prajesh-tech</span>
+              </a>
+            </div>
+          </div>
+          <!-- Hero Avatar / Emblem with GlareHover -->
+          <div class="blur-fade-init relative group shrink-0" style="animation-delay: 200ms;">
+            <div class="glare-hover-container w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-surface-container-highest dark:bg-[#22222b] p-1 shadow-md border border-black/5 dark:border-white/10" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.35" data-glare-size="200" data-glare-transition="800">
+              <div class="w-full h-full rounded-full bg-primary-container dark:bg-[#101014] flex flex-col items-center justify-center text-on-primary dark:text-white overflow-hidden relative">
+                <span class="font-headline-section text-2xl tracking-tighter text-on-primary dark:text-white select-none">PK</span>
+                <span class="font-label-code text-[10px] text-on-primary-container dark:text-text-muted-dark tracking-widest uppercase">AI • ML</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. About Section with Semantic H2 Section Pill Capsule -->
+        <section class="reveal-on-scroll space-y-4" id="about">
+          <div>
+            <h2 class="section-pill-capsule">About</h2>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant dark:text-[#a1a1aa] leading-relaxed">
+            I specialize in pragmatic, latency-conscious AI: building software that runs reliably under real constraints — offline CPU inference, localized language models, tightly tuned vector retrieval via <span class="font-medium text-on-surface dark:text-white">FAISS</span> &amp; <span class="font-medium text-on-surface dark:text-white">ChromaDB</span>, and responsive full-stack interfaces powered by <span class="font-medium text-on-surface dark:text-white">FastAPI</span> and <span class="font-medium text-on-surface dark:text-white">React</span>. My goal is simple: deliver deterministic, secure intelligence into products without exorbitant cloud overhead.
+          </p>
+        </section>
+
+        <!-- 4. Work Experience with Semantic H2 Section Pill Capsule & SpotlightCard Effect -->
+        <section class="reveal-on-scroll space-y-6" id="experience">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="section-pill-capsule">Work Experience</h2>
+            </div>
+            <span class="font-label-code text-label-code text-on-surface-variant dark:text-text-muted-dark">Production • Shipping</span>
+          </div>
+          <!-- Experience Item (SpotlightCard + GlareHover) -->
+          <div class="reveal-on-scroll spotlight-card glare-hover-container relative bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl p-5 sm:p-6 shadow-sm hover:shadow-md border border-black/5 dark:border-white/10 transition-shadow" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.25" data-glare-size="340" data-glare-transition="800" data-spotlight-card="">
+            <div class="flex items-start gap-4 relative z-10">
+              <!-- Company Avatar Pill -->
+              <div class="w-10 h-10 rounded-full bg-primary dark:bg-white text-on-primary dark:text-black flex items-center justify-center shrink-0 shadow-sm">
+                <span aria-hidden="true" class="material-symbols-outlined text-[20px]">smart_toy</span>
+              </div>
+              <div class="flex-1 min-w-0 space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                  <div>
+                    <h3 class="font-headline-item text-headline-item text-on-surface dark:text-white flex items-center gap-2">
+                      <span>AI Trainee</span>
+                      <span class="text-on-surface-variant dark:text-text-muted-dark font-normal">•</span>
+                      <span class="text-on-surface dark:text-white font-medium">Viswam AI</span>
+                    </h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-text-muted-dark">Generative AI Product Team</p>
+                  </div>
+                  <div class="inline-flex items-center gap-1 font-label-code text-label-code text-on-surface-variant dark:text-text-muted-dark bg-surface-container dark:bg-[#1b1b22] px-2.5 py-1 rounded-full w-fit">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[13px]">calendar_today</span>
+                    <span>May 2026 – Present</span>
+                  </div>
+                </div>
+                <!-- Bullet Points -->
+                <ul class="space-y-2 pt-1 font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa]">
+                  <li class="flex items-start gap-2">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary dark:text-sky-400 shrink-0 mt-0.5">check_circle</span>
+                    <span><strong class="font-medium text-on-surface dark:text-white">Full-Stack AI Interfaces:</strong> Built and shipped web apps with React, Vite, and FastAPI connecting Python inference services to responsive internal UIs in high-tempo sprint cycles.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary dark:text-sky-400 shrink-0 mt-0.5">check_circle</span>
+                    <span><strong class="font-medium text-on-surface dark:text-white">Custom RAG Architecture:</strong> Engineered end-to-end document search and QA pipelines, owning chunking strategies, embedding generation, and semantic top-k retrieval.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary dark:text-sky-400 shrink-0 mt-0.5">check_circle</span>
+                    <span><strong class="font-medium text-on-surface dark:text-white">Offline-First Inference:</strong> Deployed localized LLMs running on CPU, ensuring zero cloud API latency or leakage for confidential workflows.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary dark:text-sky-400 shrink-0 mt-0.5">check_circle</span>
+                    <span><strong class="font-medium text-on-surface dark:text-white">ASR Adaptation:</strong> Preprocessed audio and adapted speech recognition models on the Mozilla Common Voice dataset using Hugging Face Transformers.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-primary dark:text-sky-400 shrink-0 mt-0.5">check_circle</span>
+                    <span><strong class="font-medium text-on-surface dark:text-white">Containerization &amp; CI/CD:</strong> Packaged inference microservices with Docker, automated testing with GitLab CI/CD, and deployed publicly onto Hugging Face Spaces.</span>
+                  </li>
+                </ul>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-code text-[11px]">FastAPI</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-code text-[11px]">React</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-code text-[11px]">LangChain</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-code text-[11px]">Docker</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-code text-[11px]">Hugging Face</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Projects Section with Uniform GlareHover & SpotlightCard -->
+        <section class="reveal-on-scroll space-y-6" id="projects">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div class="space-y-1">
+              <div>
+                <h2 class="section-pill-capsule">Projects</h2>
+              </div>
+              <h3 class="font-headline-section text-headline-section text-on-surface dark:text-white tracking-tight pt-1">
+                Featured Engineering Work
+              </h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa]">
+                Hand-crafted systems focusing on local execution, semantic retrieval, and low-latency interactions.
+              </p>
+            </div>
+            <!-- Interactive Category Filter Tabs -->
+            <div class="flex items-center gap-1 p-1 rounded-full bg-surface-container dark:bg-[#18181e] border border-black/5 dark:border-white/10 w-fit shrink-0 self-start sm:self-auto" id="project-filter-tabs" role="tablist" aria-label="Filter projects">
+              <button role="tab" aria-selected="true" aria-controls="project-grid" data-filter="all" class="project-tab-btn active px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-all cursor-pointer bg-primary dark:bg-white text-on-primary dark:text-black shadow-sm" type="button">All (4)</button>
+              <button role="tab" aria-selected="false" aria-controls="project-grid" data-filter="ai" class="project-tab-btn px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-all cursor-pointer text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white" type="button">AI &amp; RAG</button>
+              <button role="tab" aria-selected="false" aria-controls="project-grid" data-filter="fullstack" class="project-tab-btn px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium transition-all cursor-pointer text-on-surface-variant dark:text-text-muted-dark hover:text-on-surface dark:hover:text-white" type="button">Full-Stack</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="project-grid">
+            <!-- Project 1: Offline Resume Parser -->
+            <div class="project-card reveal-on-scroll spotlight-card glare-hover-container group flex flex-col justify-between bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md border border-black/5 dark:border-white/10 transition-all" data-category="ai" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.25" data-glare-size="340" data-glare-transition="800" data-spotlight-card="">
+              <div class="p-5 space-y-3 relative z-10">
+                <div class="flex items-center justify-between">
+                  <div class="w-8 h-8 rounded-lg bg-surface-container dark:bg-[#1b1b22] flex items-center justify-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface dark:text-white">description</span>
+                  </div>
+                  <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark bg-surface-container dark:bg-[#1b1b22] px-2 py-0.5 rounded">Local CPU</span>
+                </div>
+                <div class="space-y-1">
+                  <h3 class="font-headline-item text-headline-item text-on-surface dark:text-white group-hover:text-primary dark:group-hover:text-sky-400 transition-colors">
+                    Offline Resume Parser
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa] line-clamp-3 leading-relaxed">
+                    Privacy-first parsing pipeline extracting structured candidate schemas with zero external API calls. Features OCR preprocessing and CPU-optimized quantized LLM inference.
+                  </p>
+                </div>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">React</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">FastAPI</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Python</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">OCR</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Local AI Inference</span>
+                </div>
+              </div>
+              <div class="px-5 pb-4 pt-2 flex items-center gap-2 relative z-10">
+                <a class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface dark:text-white font-label-badge text-label-badge transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="https://github.com/prajesh-tech/Offline-Resume-Parser" rel="noreferrer" target="_blank">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">code</span>
+                  <span>Source</span>
+                </a>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-badge text-label-badge">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">lock</span>
+                  <span>100% Offline</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Project 2: Civic Truth -->
+            <div class="project-card reveal-on-scroll spotlight-card glare-hover-container group flex flex-col justify-between bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md border border-black/5 dark:border-white/10 transition-all" data-category="ai" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.25" data-glare-size="340" data-glare-transition="800" data-spotlight-card="">
+              <div class="p-5 space-y-3 relative z-10">
+                <div class="flex items-center justify-between">
+                  <div class="w-8 h-8 rounded-lg bg-surface-container dark:bg-[#1b1b22] flex items-center justify-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface dark:text-white">account_balance</span>
+                  </div>
+                  <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark bg-surface-container dark:bg-[#1b1b22] px-2 py-0.5 rounded">RAG Platform</span>
+                </div>
+                <div class="space-y-1">
+                  <h3 class="font-headline-item text-headline-item text-on-surface dark:text-white group-hover:text-primary dark:group-hover:text-sky-400 transition-colors">
+                    Civic Truth
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa] line-clamp-3 leading-relaxed">
+                    Legislative intelligence engine synthesizing dense governmental documents and bills into plain-language summaries using hybrid FAISS and ChromaDB indexing.
+                  </p>
+                </div>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Python</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">LangChain</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Streamlit</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">FAISS</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">ChromaDB</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Hugging Face</span>
+                </div>
+              </div>
+              <div class="px-5 pb-4 pt-2 flex items-center gap-2 relative z-10">
+                <a class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface dark:text-white font-label-badge text-label-badge transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="https://github.com/prajesh-tech/Civic-Truth" rel="noreferrer" target="_blank">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">code</span>
+                  <span>Source</span>
+                </a>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-badge text-label-badge">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">travel_explore</span>
+                  <span>Spaces</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Project 3: Uncover Truth -->
+            <div class="project-card reveal-on-scroll spotlight-card glare-hover-container group flex flex-col justify-between bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md border border-black/5 dark:border-white/10 transition-all" data-category="fullstack" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.25" data-glare-size="340" data-glare-transition="800" data-spotlight-card="">
+              <div class="p-5 space-y-3 relative z-10">
+                <div class="flex items-center justify-between">
+                  <div class="w-8 h-8 rounded-lg bg-surface-container dark:bg-[#1b1b22] flex items-center justify-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface dark:text-white">extension</span>
+                  </div>
+                  <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark bg-surface-container dark:bg-[#1b1b22] px-2 py-0.5 rounded">Dockerized</span>
+                </div>
+                <div class="space-y-1">
+                  <h3 class="font-headline-item text-headline-item text-on-surface dark:text-white group-hover:text-primary dark:group-hover:text-sky-400 transition-colors">
+                    Uncover Truth
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa] line-clamp-3 leading-relaxed">
+                    Logic-puzzle web application engineered for cross-platform play, featuring state synchronization, i18n localization, and automated multi-stage Docker builds.
+                  </p>
+                </div>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">React</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Express.js</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Docker</span>
+                </div>
+              </div>
+              <div class="px-5 pb-4 pt-2 flex items-center gap-2 relative z-10">
+                <a class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface dark:text-white font-label-badge text-label-badge transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="https://github.com/prajesh-tech/Uncover-Truth" rel="noreferrer" target="_blank">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">code</span>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 4: Auto Repair Hub -->
+            <div class="project-card reveal-on-scroll spotlight-card glare-hover-container group flex flex-col justify-between bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-sm hover:shadow-md border border-black/5 dark:border-white/10 transition-all" data-category="fullstack" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.25" data-glare-size="340" data-glare-transition="800" data-spotlight-card="">
+              <div class="p-5 space-y-3 relative z-10">
+                <div class="flex items-center justify-between">
+                  <div class="w-8 h-8 rounded-lg bg-surface-container dark:bg-[#1b1b22] flex items-center justify-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface dark:text-white">car_repair</span>
+                  </div>
+                  <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark bg-surface-container dark:bg-[#1b1b22] px-2 py-0.5 rounded">Relational Engine</span>
+                </div>
+                <div class="space-y-1">
+                  <h3 class="font-headline-item text-headline-item text-on-surface dark:text-white group-hover:text-primary dark:group-hover:text-sky-400 transition-colors">
+                    Auto Repair Hub
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa] line-clamp-3 leading-relaxed">
+                    Relational database engine and full automotive service management system supporting automated maintenance scheduling, real-time ticket tracking, technician role assignment, and inventory sync.
+                  </p>
+                </div>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">MySQL</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">Relational Database Engine</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">FastAPI</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[10px] font-medium">React</span>
+                </div>
+              </div>
+              <div class="px-5 pb-4 pt-2 flex items-center gap-2 relative z-10">
+                <a class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface dark:text-white font-label-badge text-label-badge transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="https://github.com/prajesh-tech/Auto-Repair-Hub" rel="noreferrer" target="_blank">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">code</span>
+                  <span>Source</span>
+                </a>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container dark:bg-[#1b1b22] text-on-surface-variant dark:text-text-muted-dark font-label-badge text-label-badge">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[13px]">schedule</span>
+                  <span>Service Automation</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Technical Skills Section with Semantic H2 Section Pill Capsule -->
+        <section class="reveal-on-scroll space-y-6" id="skills">
+          <div>
+            <h2 class="section-pill-capsule">Skills</h2>
+          </div>
+          <div class="space-y-4">
+            <!-- AI & Machine Learning -->
+            <div class="space-y-2">
+              <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark uppercase tracking-wider block">AI &amp; Machine Learning</span>
+              <div class="skill-pill-cluster">
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">LangChain</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Hugging Face Transformers</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Sentence Transformers</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">RAG Architecture</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Prompt Engineering</span>
+              </div>
+            </div>
+            <!-- Vector Stores & Backend -->
+            <div class="space-y-2">
+              <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark uppercase tracking-wider block">Vector Stores &amp; Backend</span>
+              <div class="skill-pill-cluster">
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">FAISS</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">ChromaDB</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">FastAPI</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Streamlit</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Express.js</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">REST APIs</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Supabase</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">MySQL</span>
+              </div>
+            </div>
+            <!-- Languages & Web Stack -->
+            <div class="space-y-2">
+              <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark uppercase tracking-wider block">Languages &amp; Web Stack</span>
+              <div class="skill-pill-cluster">
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Python</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">TypeScript</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">JavaScript</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">React</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Vite</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Tailwind CSS</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Java</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">C</span>
+                <span class="skill-pill-item px-3 py-1 rounded-full bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm text-on-surface dark:text-white border border-black/5 dark:border-white/10 font-label-badge text-label-badge shadow-sm">Shell</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Education & Leadership Section with Semantic H2 Section Pill Capsule -->
+        <section class="reveal-on-scroll space-y-6" id="education">
+          <div>
+            <h2 class="section-pill-capsule">Education &amp; Leadership</h2>
+          </div>
+          <div class="space-y-3">
+            <!-- University -->
+            <div class="bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl p-5 shadow-sm border border-black/5 dark:border-white/10 space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <div>
+                  <h3 class="font-headline-item text-headline-item text-on-surface dark:text-white">
+                    ICFAI Foundation for Higher Education (IFHE), Hyderabad
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa]">
+                    Bachelor of Technology in Artificial Intelligence &amp; Data Science • <strong class="text-on-surface dark:text-white font-semibold">CGPA: 8.83 / 10</strong>
+                  </p>
+                </div>
+                <span class="font-label-code text-label-code text-on-surface-variant dark:text-text-muted-dark bg-surface-container dark:bg-[#1b1b22] px-2.5 py-1 rounded-full w-fit">
+                  2024 – 2028
+                </span>
+              </div>
+              <div class="space-y-1.5 pt-1">
+                <span class="font-label-code text-[10px] text-on-surface-variant dark:text-text-muted-dark uppercase tracking-wider">Key Coursework</span>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">Data Structures</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">Algorithms</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">DBMS</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">Operating Systems</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">Computer Networks</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">AI &amp; Machine Learning</span>
+                  <span class="px-2 py-0.5 rounded-md bg-surface-container dark:bg-[#1b1b22] text-on-surface dark:text-white text-[11px]">Web Architecture</span>
+                </div>
+              </div>
+            </div>
+            <!-- High School / Junior College Rows -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-black/5 dark:border-white/10 flex items-center justify-between">
+                <div class="space-y-0.5">
+                  <h4 class="font-headline-item text-[14px] leading-tight text-on-surface dark:text-white">Narayana Junior College</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa]">Class XII (Intermediate)</p>
+                </div>
+                <span class="font-label-code text-label-code font-semibold text-on-surface dark:text-white bg-surface-container dark:bg-[#1b1b22] px-2 py-1 rounded">86%</span>
+              </div>
+              <div class="bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-black/5 dark:border-white/10 flex items-center justify-between">
+                <div class="space-y-0.5">
+                  <h4 class="font-headline-item text-[14px] leading-tight text-on-surface dark:text-white">Jubilee Hills Public School</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa]">Class X (SSC, 2022)</p>
+                </div>
+                <span class="font-label-code text-label-code font-semibold text-on-surface dark:text-white bg-surface-container dark:bg-[#1b1b22] px-2 py-1 rounded">84%</span>
+              </div>
+            </div>
+            <!-- Community Card -->
+            <div class="pt-1">
+              <div class="bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-xl p-4 shadow-sm border border-black/5 dark:border-white/10 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-surface-container dark:bg-[#1b1b22] flex items-center justify-center shrink-0">
+                  <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface dark:text-white">groups</span>
+                </div>
+                <div>
+                  <h4 class="font-headline-item text-[14px] text-on-surface dark:text-white">Google Developer Group (GDG)</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant dark:text-[#a1a1aa]">Active student club member engaging in technical sessions and open developer exchanges.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Bottom Contact CTA Section with GlareHover interactive reflection effect -->
+        <section class="reveal-on-scroll glare-hover-container bg-surface-container-lowest/90 dark:bg-[#121215]/90 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-sm border border-black/5 dark:border-white/10 space-y-4 text-center cursor-default" data-glare-angle="-30" data-glare-color="#ffffff" data-glare-hover="" data-glare-opacity="0.2" data-glare-size="420" data-glare-transition="800" id="contact">
+          <div>
+            <h2 class="section-pill-capsule relative z-10">Get In Touch</h2>
+          </div>
+          <div class="space-y-1 max-w-md mx-auto relative z-10">
+            <h3 class="font-headline-section text-headline-section text-on-surface dark:text-white">Let's build together.</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant dark:text-[#a1a1aa]">
+              Seeking AI Engineer or Full-Stack developer internship opportunities. Open to discussions on offline inference, local RAG architectures, or contract prototypes.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-3 pt-2 relative z-10">
+            <button class="copy-contact-btn inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary dark:bg-white text-on-primary dark:text-black font-label-badge text-label-badge hover:opacity-90 transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer" data-copy="prajeshkaniganti@gmail.com" data-type="Email" type="button" aria-label="Copy email address">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">mail</span>
+              <span>prajeshkaniganti@gmail.com</span>
+            </button>
+            <button class="copy-contact-btn inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container dark:bg-[#1b1b22] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface dark:text-white font-label-badge text-label-badge transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 cursor-pointer" data-copy="+917893331291" data-type="Phone number" type="button" aria-label="Copy phone number">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">call</span>
+              <span>+91 7893331291</span>
+            </button>
+            <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container dark:bg-[#1b1b22] hover:bg-surface-container-high dark:hover:bg-[#252530] text-on-surface dark:text-white font-label-badge text-label-badge transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500" href="https://github.com/prajesh-tech" rel="noreferrer" target="_blank">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">code</span>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  /**
+   * 0. Comprehensive Dark Theme Logic & DotField Theme Sync
+   */
+  (function initTheme() {
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('prajesh_theme', isDark ? 'dark' : 'light');
+      updateSpotlightCardsTheme(isDark);
+      if (window.updateDotFieldTheme) {
+        window.updateDotFieldTheme(isDark);
+      }
+    }
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('prajesh_theme')) {
+          if (e.matches) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+          updateSpotlightCardsTheme(e.matches);
+          if (window.updateDotFieldTheme) {
+            window.updateDotFieldTheme(e.matches);
+          }
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const topToggle = document.getElementById('theme-toggle-btn');
+      if (topToggle) topToggle.addEventListener('click', toggleTheme);
+    });
+  })();
+
+  /**
+   * 0.1 React Bits <DotField /> Component Implementation
+   * Full canvas interactive background with bulge physics, wave displacement, reduced motion, and page visibility optimizations
+   */
+  (function initDotField() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('dotfield-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = 0;
+      let height = 0;
+      let dots = [];
+      const spacing = 28;
+      const baseRadius = 1.35;
+      const mouse = { x: -2000, y: -2000, vx: 0, vy: 0, active: false };
+      let lastMouse = { x: -2000, y: -2000 };
+      let time = 0;
+      let animationId = null;
+      let isRunning = false;
+      let idleFrames = 0;
+
+      // Theme color specifications
+      const themeParams = {
+        dark: {
+          gradientFrom: 'rgba(168, 85, 247, 0.28)',
+          gradientTo: 'rgba(59, 130, 246, 0.18)',
+          glowColor: 'rgba(168, 85, 247, 0.15)',
+          baseDot: 'rgba(255, 255, 255, 0.12)'
+        },
+        light: {
+          gradientFrom: 'rgba(147, 51, 234, 0.22)',
+          gradientTo: 'rgba(37, 99, 235, 0.14)',
+          glowColor: 'rgba(147, 51, 234, 0.10)',
+          baseDot: 'rgba(15, 23, 42, 0.11)'
+        }
+      };
+
+      let currentTheme = document.documentElement.classList.contains('dark') ? themeParams.dark : themeParams.light;
+
+      window.updateDotFieldTheme = function(isDark) {
+        currentTheme = isDark ? themeParams.dark : themeParams.light;
+        if (!isRunning) {
+          drawStaticFrame();
+        }
+      };
+
+      const isTouchPrimary = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+
+      function shouldAnimate() {
+        return !document.hidden && !motionQuery.matches && !isTouchPrimary;
+      }
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        dots = [];
+        const cols = Math.ceil(width / spacing) + 2;
+        const rows = Math.ceil(height / spacing) + 2;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const originX = c * spacing - spacing / 2;
+            const originY = r * spacing - spacing / 2;
+            dots.push({
+              originX,
+              originY,
+              x: originX,
+              y: originY,
+              vx: 0,
+              vy: 0,
+              baseRadius: baseRadius * (0.8 + Math.random() * 0.4)
+            });
+          }
+        }
+
+        if (!shouldAnimate()) {
+          drawStaticFrame();
+        }
+      }
+
+      function drawStaticFrame() {
+        if (width === 0 || height === 0) return;
+        ctx.clearRect(0, 0, width, height);
+        const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+        bgGradient.addColorStop(0, currentTheme.gradientFrom);
+        bgGradient.addColorStop(1, currentTheme.gradientTo);
+        ctx.fillStyle = bgGradient;
+
+        for (let i = 0; i < dots.length; i++) {
+          const dot = dots[i];
+          ctx.beginPath();
+          ctx.arc(dot.originX, dot.originY, dot.baseRadius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function render() {
+        if (!shouldAnimate()) {
+          stopLoop();
+          drawStaticFrame();
+          return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+        time += 0.02;
+
+        // Mouse speed tracking
+        mouse.vx = (mouse.x - lastMouse.x) * 0.3;
+        mouse.vy = (mouse.y - lastMouse.y) * 0.3;
+        lastMouse.x = mouse.x;
+        lastMouse.y = mouse.y;
+
+        const bulgeRadius = 140;
+        const bulgePower = 28;
+        const returnFactor = 0.08;
+        const damping = 0.88;
+
+        // Render radial glow around cursor if active
+        if (mouse.active) {
+          const glowRadius = 240;
+          const radialGlow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowRadius);
+          radialGlow.addColorStop(0, currentTheme.glowColor);
+          radialGlow.addColorStop(1, 'transparent');
+          ctx.fillStyle = radialGlow;
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y, glowRadius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Background ambient gradient for dots
+        const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+        bgGradient.addColorStop(0, currentTheme.gradientFrom);
+        bgGradient.addColorStop(1, currentTheme.gradientTo);
+
+        for (let i = 0; i < dots.length; i++) {
+          const dot = dots[i];
+
+          // Wave displacement physics
+          const wave = Math.sin(time + dot.originX * 0.008 + dot.originY * 0.008) * 1.5;
+
+          // Bulge physics around cursor
+          let targetX = dot.originX;
+          let targetY = dot.originY + wave;
+
+          if (mouse.active) {
+            const dx = dot.x - mouse.x;
+            const dy = dot.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < bulgeRadius && dist > 0.1) {
+              const force = (1 - dist / bulgeRadius) * bulgePower;
+              const angle = Math.atan2(dy, dx);
+              targetX += Math.cos(angle) * force;
+              targetY += Math.sin(angle) * force;
+            }
+          }
+
+          // Spring physics
+          const ax = (targetX - dot.x) * returnFactor;
+          const ay = (targetY - dot.y) * returnFactor;
+          dot.vx = (dot.vx + ax) * damping;
+          dot.vy = (dot.vy + ay) * damping;
+          dot.x += dot.vx;
+          dot.y += dot.vy;
+
+          // Proximity glow scaling
+          let radius = dot.baseRadius;
+          if (mouse.active) {
+            const dist = Math.hypot(dot.x - mouse.x, dot.y - mouse.y);
+            if (dist < 180) {
+              radius *= 1 + (1 - dist / 180) * 1.2;
+            }
+          }
+
+          ctx.fillStyle = bgGradient;
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        if (!mouse.active) {
+          idleFrames++;
+          if (idleFrames > 90) {
+            stopLoop();
+            drawStaticFrame();
+            return;
+          }
+        } else {
+          idleFrames = 0;
+        }
+
+        animationId = requestAnimationFrame(render);
+      }
+
+      function startLoop() {
+        if (isRunning || !shouldAnimate()) return;
+        isRunning = true;
+        idleFrames = 0;
+        animationId = requestAnimationFrame(render);
+      }
+
+      function stopLoop() {
+        isRunning = false;
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+
+      if (!isTouchPrimary) {
+        window.addEventListener('mousemove', (e) => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+          mouse.active = true;
+          idleFrames = 0;
+          if (!isRunning && shouldAnimate()) {
+            startLoop();
+          }
+        }, { passive: true });
+
+        document.addEventListener('mouseleave', () => {
+          mouse.active = false;
+          mouse.x = -2000;
+          mouse.y = -2000;
+        });
+      }
+
+      // Page Visibility API handler
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopLoop();
+        } else if (shouldAnimate()) {
+          startLoop();
+        }
+      });
+
+      // Reduced motion preference change listener
+      if (motionQuery.addEventListener) {
+        motionQuery.addEventListener('change', () => {
+          if (shouldAnimate()) {
+            startLoop();
+          } else {
+            stopLoop();
+            drawStaticFrame();
+          }
+        });
+      }
+
+      resize();
+      if (shouldAnimate()) {
+        startLoop();
+      } else {
+        drawStaticFrame();
+      }
+    });
+  })();
+
+  /**
+   * 1. IntersectionObserver for Blur-Fade Scroll Reveal
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.classList.add('js-observer-ready');
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.05,
+        rootMargin: '0px 0px 50px 0px'
+      });
+
+      revealElements.forEach((el) => {
+        const parentGrid = el.closest('.grid');
+        if (parentGrid) {
+          const siblings = Array.from(parentGrid.querySelectorAll('.reveal-on-scroll'));
+          const itemIdx = siblings.indexOf(el);
+          if (itemIdx >= 0) {
+            el.style.transitionDelay = `${(itemIdx % 2) * 90}ms`;
+          }
+        }
+        revealObserver.observe(el);
+      });
+    } else {
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }
+  });
+
+  /**
+   * 2. React Bits <PillNav /> Component Runtime (Animated gliding indicator)
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('pill-nav-links');
+    const indicator = document.getElementById('pill-sliding-bg');
+    if (!container || !indicator) return;
+
+    const links = Array.from(container.querySelectorAll('.pill-link'));
+    let activeLink = links[0];
+
+    function positionIndicator(target) {
+      if (!target) {
+        indicator.style.opacity = '0';
+        return;
+      }
+      const containerRect = container.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const leftOffset = targetRect.left - containerRect.left;
+      const width = targetRect.width;
+
+      indicator.style.width = `${width}px`;
+      indicator.style.transform = `translateX(${leftOffset}px)`;
+      indicator.style.opacity = '1';
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        positionIndicator(link);
+      });
+      link.addEventListener('focus', () => {
+        positionIndicator(link);
+      });
+      link.addEventListener('click', () => {
+        activeLink = link;
+        links.forEach(l => l.classList.remove('text-on-surface', 'dark:text-white'));
+        link.classList.add('text-on-surface', 'dark:text-white');
+        positionIndicator(link);
+      });
+    });
+
+    container.addEventListener('mouseleave', () => {
+      positionIndicator(activeLink);
+    });
+
+    // Set initial indicator position
+    setTimeout(() => {
+      positionIndicator(activeLink);
+    }, 100);
+
+    // Sync with scroll position
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 140;
+      const sections = ['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact'];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el) {
+          const elTop = el.getBoundingClientRect().top + window.scrollY;
+          if (elTop <= scrollPos) {
+            const matchingLink = links.find(l => l.getAttribute('data-path') === sections[i]);
+            if (matchingLink && activeLink !== matchingLink) {
+              activeLink = matchingLink;
+              links.forEach(l => l.classList.remove('text-on-surface', 'dark:text-white'));
+              matchingLink.classList.add('text-on-surface', 'dark:text-white');
+              positionIndicator(activeLink);
+            }
+            break;
+          }
+        }
+      }
+    }, { passive: true });
+  });
+
+  /**
+   * 3. React Bits <SpotlightCard /> Component Runtime (Mouse-tracking radial highlight with light & dark mode support)
+   */
+  function updateSpotlightCardsTheme(isDark) {
+    const cards = document.querySelectorAll('[data-spotlight-card]');
+    cards.forEach(card => {
+      card.style.setProperty(
+        '--card-spotlight',
+        isDark ? 'rgba(0, 229, 255, 0.18)' : 'rgba(99, 102, 241, 0.12)'
+      );
+      card.style.setProperty(
+        '--card-spotlight-border',
+        isDark ? 'rgba(0, 229, 255, 0.4)' : 'rgba(99, 102, 241, 0.3)'
+      );
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    updateSpotlightCardsTheme(isDark);
+
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const cards = document.querySelectorAll('[data-spotlight-card]');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }, { passive: true });
+      card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--mouse-x', '-999px');
+        card.style.setProperty('--mouse-y', '-999px');
+      });
+    });
+  });
+
+  /**
+   * 4. Interactive Project Category Filter Tabs
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabsContainer = document.getElementById('project-filter-tabs');
+    const projectCards = document.querySelectorAll('.project-card');
+    if (!tabsContainer || !projectCards.length) return;
+
+    const tabButtons = tabsContainer.querySelectorAll('.project-tab-btn');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        tabButtons.forEach(b => {
+          b.classList.remove('active', 'bg-primary', 'dark:bg-white', 'text-on-primary', 'dark:text-black', 'shadow-sm');
+          b.classList.add('text-on-surface-variant', 'dark:text-text-muted-dark');
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        btn.classList.add('active', 'bg-primary', 'dark:bg-white', 'text-on-primary', 'dark:text-black', 'shadow-sm');
+        btn.classList.remove('text-on-surface-variant', 'dark:text-text-muted-dark');
+        btn.setAttribute('aria-selected', 'true');
+
+        projectCards.forEach(card => {
+          const category = card.dataset.category;
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+
+  /**
+   * 5. Toast Notification & Copy-to-Clipboard Runtime
+   */
+  let toastTimeout = null;
+  function showToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastMsg = document.getElementById('toast-message');
+    if (!toast || !toastMsg) return;
+
+    toastMsg.textContent = message;
+    toast.classList.add('toast-visible');
+
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toast.classList.remove('toast-visible');
+    }, 2400);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const copyButtons = document.querySelectorAll('.copy-contact-btn');
+    copyButtons.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const text = btn.dataset.copy;
+        const type = btn.dataset.type || 'Value';
+        if (!text) return;
+
+        try {
+          await navigator.clipboard.writeText(text);
+          const icon = btn.querySelector('.material-symbols-outlined');
+          const originalIcon = icon ? icon.textContent : '';
+          if (icon) icon.textContent = 'check';
+
+          showToast(`Copied ${type} to clipboard!`);
+
+          setTimeout(() => {
+            if (icon) icon.textContent = originalIcon;
+          }, 1800);
+        } catch (err) {
+          showToast(`Copied: ${text}`);
+        }
+      });
+    });
+  });
+
+  /**
+   * 6. ⌘K / Ctrl+K Command Palette Modal Controller
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const backdrop = document.getElementById('command-palette-backdrop');
+    const modal = document.getElementById('command-palette-modal');
+    const trigger = document.getElementById('cmd-k-trigger');
+    const searchInput = document.getElementById('cmd-search-input');
+    const itemsList = document.getElementById('cmd-items-list');
+    if (!backdrop || !modal || !searchInput || !itemsList) return;
+
+    const items = Array.from(itemsList.querySelectorAll('.cmd-item'));
+    let selectedIndex = 0;
+
+    function openPalette() {
+      backdrop.classList.add('cmd-open');
+      searchInput.value = '';
+      filterItems('');
+      selectedIndex = 0;
+      updateSelection();
+      setTimeout(() => searchInput.focus(), 50);
+    }
+
+    function closePalette() {
+      backdrop.classList.remove('cmd-open');
+    }
+
+    function updateSelection() {
+      const visibleItems = items.filter(el => el.style.display !== 'none');
+      visibleItems.forEach((el, idx) => {
+        if (idx === selectedIndex) {
+          el.classList.add('bg-black/5', 'dark:bg-white/10');
+          el.scrollIntoView({ block: 'nearest' });
+        } else {
+          el.classList.remove('bg-black/5', 'dark:bg-white/10');
+        }
+      });
+    }
+
+    function filterItems(query) {
+      const q = query.toLowerCase().trim();
+      let matchCount = 0;
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          item.style.display = 'flex';
+          matchCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      selectedIndex = 0;
+      updateSelection();
+    }
+
+    async function executeItem(item) {
+      if (!item) return;
+      const cmd = item.dataset.cmd;
+      closePalette();
+
+      if (cmd === 'nav') {
+        const target = item.dataset.target;
+        if (target) {
+          const el = document.querySelector(target);
+          if (el) {
+            const offsetTop = el.getBoundingClientRect().top + window.scrollY - 85;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            history.pushState(null, null, target);
+          }
+        }
+      } else if (cmd === 'copy-email') {
+        try { await navigator.clipboard.writeText('prajeshkaniganti@gmail.com'); } catch(e) {}
+        showToast('Copied email to clipboard!');
+      } else if (cmd === 'copy-phone') {
+        try { await navigator.clipboard.writeText('+917893331291'); } catch(e) {}
+        showToast('Copied phone number to clipboard!');
+      } else if (cmd === 'toggle-theme') {
+        const topToggle = document.getElementById('theme-toggle-btn');
+        if (topToggle) topToggle.click();
+      } else if (cmd === 'open-link') {
+        const url = item.dataset.url;
+        if (url) window.open(url, '_blank', 'noreferrer');
+      }
+    }
+
+    // Keyboard Shortcuts (⌘K, Ctrl+K, ESC)
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (backdrop.classList.contains('cmd-open')) {
+          closePalette();
+        } else {
+          openPalette();
+        }
+      } else if (e.key === 'Escape' && backdrop.classList.contains('cmd-open')) {
+        closePalette();
+      } else if (backdrop.classList.contains('cmd-open')) {
+        const visibleItems = items.filter(el => el.style.display !== 'none');
+        if (!visibleItems.length) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex + 1) % visibleItems.length;
+          updateSelection();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex - 1 + visibleItems.length) % visibleItems.length;
+          updateSelection();
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          executeItem(visibleItems[selectedIndex]);
+        }
+      }
+    });
+
+    if (trigger) {
+      trigger.addEventListener('click', openPalette);
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      filterItems(e.target.value);
+    });
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        executeItem(item);
+      });
+    });
+
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        closePalette();
+      }
+    });
+  });
+
+  /**
+   * 6. React Bits GlareHover Component Runtime (Dynamic -30deg glare sweep reflection tracking cursor with RAF throttling)
+   */
+  (function initGlareHover() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('[data-glare-hover]');
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      elements.forEach((container) => {
+        const glareColor = container.dataset.glareColor || '#ffffff';
+        const glareOpacity = parseFloat(container.dataset.glareOpacity || '0.3');
+        const glareAngle = container.dataset.glareAngle || '-30';
+        const glareSize = parseInt(container.dataset.glareSize || '300', 10);
+        const transitionDuration = parseInt(container.dataset.glareTransition || '800', 10);
+
+        const glareLayer = document.createElement('div');
+        glareLayer.className = 'glare-hover-layer';
+        glareLayer.style.transition = `opacity ${transitionDuration}ms ease, transform 120ms cubic-bezier(0.16, 1, 0.3, 1)`;
+
+        let rgbaColor = 'rgba(255, 255, 255, ' + glareOpacity + ')';
+        if (glareColor.startsWith('#') && glareColor.length === 7) {
+          const r = parseInt(glareColor.slice(1, 3), 16);
+          const g = parseInt(glareColor.slice(3, 5), 16);
+          const b = parseInt(glareColor.slice(5, 7), 16);
+          rgbaColor = `rgba(${r}, ${g}, ${b}, ${glareOpacity})`;
+        }
+
+        glareLayer.style.background = `linear-gradient(${glareAngle}deg, transparent 0%, ${rgbaColor} 50%, transparent 100%)`;
+        glareLayer.style.width = `${glareSize * 2}px`;
+        glareLayer.style.height = `${glareSize * 2}px`;
+        glareLayer.style.top = '0px';
+        glareLayer.style.left = '0px';
+
+        container.appendChild(glareLayer);
+
+        let rafId = null;
+        let targetX = 0;
+        let targetY = 0;
+
+        const updatePosition = () => {
+          glareLayer.style.transform = `translate3d(${targetX - glareSize}px, ${targetY - glareSize}px, 0)`;
+          glareLayer.style.opacity = '1';
+          rafId = null;
+        };
+
+        const handlePointer = (e) => {
+          const rect = container.getBoundingClientRect();
+          targetX = e.clientX - rect.left;
+          targetY = e.clientY - rect.top;
+          if (!rafId) {
+            rafId = requestAnimationFrame(updatePosition);
+          }
+        };
+
+        container.addEventListener('mousemove', handlePointer, { passive: true });
+        container.addEventListener('mouseenter', handlePointer, { passive: true });
+
+        container.addEventListener('mouseleave', () => {
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+          glareLayer.style.opacity = '0';
+        });
+      });
+    });
+  })();
+  </script>
+
+  <!-- Interactive Feedback Toast Notification -->
+  <div id="toast-notification" class="flex items-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900/90 dark:bg-white text-white dark:text-black shadow-2xl border border-white/10 dark:border-black/10 font-label-badge text-xs" role="alert" aria-live="polite">
+    <span aria-hidden="true" class="material-symbols-outlined text-[16px] text-emerald-400 dark:text-emerald-600">check_circle</span>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- ⌘K / Ctrl+K Command Palette Modal -->
+  <div id="command-palette-backdrop" class="flex items-start justify-center pt-20 sm:pt-28 px-4" role="dialog" aria-modal="true" aria-label="Command Menu">
+    <div id="command-palette-modal" class="w-full max-w-lg bg-surface-container-lowest/95 dark:bg-[#141419]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-black/10 dark:border-white/10 overflow-hidden flex flex-col max-h-[75vh]">
+      <!-- Search Input Header -->
+      <div class="flex items-center gap-2.5 px-4 py-3.5 border-b border-black/5 dark:border-white/10">
+        <span aria-hidden="true" class="material-symbols-outlined text-on-surface-variant dark:text-text-muted-dark text-[20px]">search</span>
+        <input type="text" id="cmd-search-input" placeholder="Type a command or search..." autocomplete="off" class="w-full bg-transparent border-0 outline-none focus:outline-none focus:ring-0 text-on-surface dark:text-white placeholder:text-on-surface-variant/60 dark:placeholder:text-text-muted-dark/60 text-sm font-sans" />
+        <kbd class="px-2 py-0.5 rounded bg-surface-container dark:bg-[#202028] text-on-surface-variant dark:text-text-muted-dark font-label-code text-[10px]">ESC</kbd>
+      </div>
+
+      <!-- Actionable Items List -->
+      <div id="cmd-items-list" class="overflow-y-auto p-2 space-y-1">
+        <!-- Navigation Section -->
+        <div class="px-2 pt-1 pb-1 font-label-code text-[10px] uppercase tracking-wider text-on-surface-variant dark:text-text-muted-dark font-semibold">Navigation</div>
+        <button type="button" data-cmd="nav" data-target="#home" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">home</span>
+            <span>Home</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+        <button type="button" data-cmd="nav" data-target="#about" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">person</span>
+            <span>About</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+        <button type="button" data-cmd="nav" data-target="#experience" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">business_center</span>
+            <span>Work Experience</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+        <button type="button" data-cmd="nav" data-target="#projects" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">terminal</span>
+            <span>Projects</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+        <button type="button" data-cmd="nav" data-target="#skills" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">build</span>
+            <span>Technical Skills</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+        <button type="button" data-cmd="nav" data-target="#education" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">school</span>
+            <span>Education</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+        <button type="button" data-cmd="nav" data-target="#contact" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">mail</span>
+            <span>Contact</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Jump</span>
+        </button>
+
+        <!-- Actions Section -->
+        <div class="px-2 pt-2.5 pb-1 font-label-code text-[10px] uppercase tracking-wider text-on-surface-variant dark:text-text-muted-dark font-semibold">Quick Actions</div>
+        <button type="button" data-cmd="copy-email" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">content_copy</span>
+            <span>Copy Email Address</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Clipboard</span>
+        </button>
+        <button type="button" data-cmd="copy-phone" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">call</span>
+            <span>Copy Phone Number</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Clipboard</span>
+        </button>
+        <button type="button" data-cmd="toggle-theme" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">dark_mode</span>
+            <span>Toggle Theme</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">Theme</span>
+        </button>
+        <button type="button" data-cmd="open-link" data-url="https://github.com/prajesh-tech" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">code</span>
+            <span>Open GitHub Profile</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">↗</span>
+        </button>
+        <button type="button" data-cmd="open-link" data-url="https://linkedin.com/in/prajesh-kaniganti" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-xl text-left hover:bg-black/5 dark:hover:bg-white/10 text-on-surface dark:text-white text-sm transition-colors cursor-pointer group">
+          <span class="flex items-center gap-2.5">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-on-surface-variant dark:text-text-muted-dark group-hover:text-primary dark:group-hover:text-white">connect_without_contact</span>
+            <span>Open LinkedIn Profile</span>
+          </span>
+          <span class="font-label-code text-[11px] text-on-surface-variant dark:text-text-muted-dark">↗</span>
+        </button>
+      </div>
+
+      <!-- Footer Keyboard Hints -->
+      <div class="px-4 py-2 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[11px] font-label-code text-on-surface-variant dark:text-text-muted-dark bg-surface-container/50 dark:bg-black/20">
+        <span class="flex items-center gap-1.5">
+          <span>Navigate</span>
+          <kbd class="px-1.5 py-0.5 rounded bg-surface-container dark:bg-[#202028]">↑</kbd>
+          <kbd class="px-1.5 py-0.5 rounded bg-surface-container dark:bg-[#202028]">↓</kbd>
+          <span>Select</span>
+          <kbd class="px-1.5 py-0.5 rounded bg-surface-container dark:bg-[#202028]">↵</kbd>
+        </span>
+        <span>ESC to close</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

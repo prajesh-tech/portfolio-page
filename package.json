@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio of K. Prajesh Kumar - AI Engineer",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --postcss --minify",
+    "build": "npm run build:css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --postcss --watch",
+    "dev": "npm run watch:css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.6.2",
+    "tailwindcss": "^3.4.17"
+  }
+}
